@@ -1,19 +1,10 @@
-# wrangler.toml
-name = "b2b-website"
-main = "./dist/server/index.js"
-
-[build]
-command = "npm run build"
-
-[build.upload]
-format = "modules"
-dir = "./dist"
-
-[env.production]
-name = "b2b-website"
-routes = [
-    { pattern = "https://b2b-website-31t.pages.dev/*", zone_name = "pages.dev" }
-]
-
-[site]
-bucket = "./dist/client"
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "b2b-website",
+  "main": "./dist/server/index.js",
+  "compatibility_date": "2026-04-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist"
+  }
+}
