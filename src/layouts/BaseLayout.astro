@@ -1,0 +1,44 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "B2B外贸网站", description = "专业B2B外贸服务平台" } = Astro.props;
+const currentPath = Astro.url.pathname;
+// 获取当前语言（从URL第一段提取）
+const currentLang = currentPath.split('/')[1] || 'en';
+---
+
+<!DOCTYPE html>
+<html lang={currentLang === 'zh' ? 'zh-CN' : currentLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/en">Home</a>
+        <a href="/zh">首页</a>
+        <a href="/es">Español</a>
+        <a href="/ar">العربية</a>
+        <span style="margin-left: auto;">
+          <a href="/en/products">Products</a>
+          <a href="/en/about">About</a>
+          <a href="/en/contact">Contact</a>
+<a href="/en/login">Login</a>
+<a href="/en/register">Register</a>
+        </span>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>&copy; 2025 B2B外贸网站 | <a href="/en/sitemap.xml">Sitemap</a></p>
+    </footer>
+  </body>
+</html>

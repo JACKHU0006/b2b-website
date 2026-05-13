@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Register - B2B Website">
+  <h1>Register</h1>
+  <form id="register-form">
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="/en/login">Login</a></p>
+
+  <script>
+    import { supabase } from '../../lib/supabase';
+    
+    const form = document.getElementById('register-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        alert(error.message);
+      } else {
+        alert('Check your email for confirmation!');
+        window.location.href = '/en/login';
+      }
+    });
+  </script>
+</BaseLayout>
