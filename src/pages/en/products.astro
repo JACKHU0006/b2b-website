@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// 临时静态产品数据
+const products = [
+  { id: 1, name: 'CNC Machining Service', description: 'High precision CNC machining for complex parts' },
+  { id: 2, name: 'Injection Molding', description: 'Custom plastic injection molding services' },
+  { id: 3, name: 'Metal Stamping', description: 'High-volume metal stamping solutions' },
+];
+---
+
+<BaseLayout title="Products - B2B Website">
+  <h1>Our Products</h1>
+  <div class="product-grid">
+    {products.map(product => (
+      <div class="product-card">
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <a href={`/en/products/${product.id}`}>Learn More →</a>
+      </div>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: white;
+  }
+  .product-card h2 {
+    margin-top: 0;
+  }
+</style>

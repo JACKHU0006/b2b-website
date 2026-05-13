@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { supabase } from '../../lib/supabase';
+
+// 检查用户是否已登录
+const { data: { user } } = await supabase.auth.getUser();
+
+if (!user) {
+  // 未登录，重定向到登录页
+  return Astro.redirect('/en/login');
+}
+---
+
+<BaseLayout title="Dashboard - B2B Website">
+  <div class="dashboard-container">
+    <h1>Welcome, {user.email}!</h1>
+    <p>This is your dashboard.</p>
+    
+    <form id="logout-form">
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+
+  <script>
+    import { supabase } from '../../lib/supabase';
+    
+    const logoutForm = document.getElementById('logout-form');
+    logoutForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await supabase.auth.signOut();
+      window.location.href = '/en';
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .dashboard-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+</style>

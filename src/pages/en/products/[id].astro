@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const products = [
+    { id: 1, name: 'CNC Machining Service', description: 'High precision CNC machining', details: '...' },
+    { id: 2, name: 'Injection Molding', description: 'Custom plastic injection molding', details: '...' },
+    { id: 3, name: 'Metal Stamping', description: 'High-volume metal stamping', details: '...' },
+  ];
+  return products.map(product => ({
+    params: { id: String(product.id) },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<BaseLayout title={`${product.name} - B2B Website`}>
+  <h1>{product.name}</h1>
+  <p>{product.description}</p>
+  <p>{product.details}</p>
+  <a href="/en/products">← Back to Products</a>
+</BaseLayout>

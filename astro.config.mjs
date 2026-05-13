@@ -5,8 +5,12 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://b2b-website.pages.dev',
   output: 'server',
-  adapter: cloudflare({
-    runtime: 'off',
-  }),
-  // ... 你其他的 i18n 配置 ...
+  adapter: cloudflare(),
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh', 'es', 'ar'],
+    routing: { prefixDefaultLocale: false },
+    fallback: { zh: 'en', es: 'en', ar: 'en' },
+  },
+  integrations: [sitemap()],
 });
