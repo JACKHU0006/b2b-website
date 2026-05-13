@@ -6,13 +6,7 @@ export default defineConfig({
   site: 'https://b2b-website.pages.dev',
   output: 'server',
   adapter: cloudflare({
-    imageService: 'compile',
+    runtime: 'off',
   }),
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'zh', 'es', 'ar'],
-    routing: { prefixDefaultLocale: false },
-    fallback: { zh: 'en', es: 'en', ar: 'en' },
-  },
-  integrations: [sitemap()],
+  // ... 你其他的 i18n 配置 ...
 });
