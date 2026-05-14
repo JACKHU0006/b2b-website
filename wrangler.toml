@@ -1,1 +1,8 @@
-keep_vars = true
+﻿name = "b2b-website-manual"
+compatibility_date = "2026-05-14"
+compatibility_flags = ["nodejs_compat"]
+
+[[assets]]
+directory = "./dist/client"
+
+run_worker_first = true
