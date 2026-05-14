@@ -2,7 +2,7 @@ backend:
   name: github
   repo: JACKHU0006/b2b-website
   branch: main
-  base_url: https://decap-oauth-proxy.jack006hu.workers.dev
+  site_domain: https://b2b-website-manual.jack006hu.workers.dev
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
