@@ -2,7 +2,7 @@ backend:
   name: github
   repo: JACKHU0006/b2b-website
   branch: main
-  site_domain: https://b2b-website-manual.jack006hu.workers.dev
+  base_url: https://sveltia-cms-auth-3rk.pages.dev   # 替换成你的认证 Worker 地址
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

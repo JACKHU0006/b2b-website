@@ -6,11 +6,9 @@
   <title>Content Manager</title>
 </head>
 <body>
-  <!-- 引入 Sveltia CMS 核心脚本，它会自动挂载到页面 -->
   <script type="module">
-    import CMS from '@sveltia/cms';
-    // 如果需要，可以在这里注册自定义预览模板等
-    // CMS.registerPreviewTemplate(...);
+    import CMS from 'https://unpkg.com/@sveltia/cms@0.7.1/dist/sveltia-cms.js';
+    // 无需额外配置，CMS 会自动读取 /admin/config.yml
   </script>
 </body>
 </html>
